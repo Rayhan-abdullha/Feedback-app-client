@@ -3,13 +3,7 @@ import FeedBackContext from './Context/Context';
 import FeedbackRating from './FeedbackRating';
 
 const FeedBackForm = () => {
-    const {handleFeedBackData, handleSubmitData, feedData, feedEdit, setFeedRating , setFeedData, feedback, message} = useContext(FeedBackContext)
-    useEffect(() => {
-        if (feedEdit.edit === true) {
-            setFeedData(feedEdit.item.text)
-            setFeedRating(feedEdit.item.rating)
-        }
-    }, [feedEdit])
+    const {handleFeedBackData, handleSubmitData, feedData, message} = useContext(FeedBackContext)
     return (
         <form onSubmit={handleSubmitData} className="container mt-4 bg-light rounded p-4">
             <div className="mb-3">

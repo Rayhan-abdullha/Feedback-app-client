@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { FaTimes, FaEdit } from 'react-icons/fa'
 import styled from 'styled-components'
 import FeedBackContext from './Context/Context';
+import { Link } from 'react-router-dom';
 
 const ItemList = styled.div`
     {
@@ -32,7 +33,8 @@ const ItemList = styled.div`
 `
 
 const FeedList = ({item}) => {
-    const {handleDelete, handleEdit} = useContext(FeedBackContext)
+    const {handleDelete} = useContext(FeedBackContext)
+    
     return (
         <ItemList className="container bg-light mt-4">
             <div className="row">
@@ -41,11 +43,13 @@ const FeedList = ({item}) => {
                     <p className="text">{item.text}</p>
                 </div>
                 <div className="button col-xl-6 col-md-6 col-sm-4">
-                    <button className="border-0">
-                    <FaEdit onClick={() => handleEdit(item)}/>
+                    <button className="border-0 deleteBtn">
+                    <Link to={`/feed/${item._id}`}>
+                        <FaEdit/>
+                    </Link>
                     </button>
-                    <button className="border-0">
-                        <FaTimes onClick={() => handleDelete(item.id)}/>
+                    <button className="border-0 deleteBtn">
+                        <FaTimes onClick={() => handleDelete(item._id)}/>
                     </button>
                 </div>
             </div>

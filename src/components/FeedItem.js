@@ -1,10 +1,11 @@
 // import { motion , AnimatePresence} from "framer-motion"
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import FeedBackContext from './Context/Context';
 import FeedList from './FeedList';
 
 const FeedItem = () => {
     const {feedback} = useContext(FeedBackContext)
+    console.log(feedback)
     if (feedback.length === 0) {
         return <p className="text-center mt-3"><strong>No Item is Here!!</strong></p>
     }
@@ -14,7 +15,7 @@ const FeedItem = () => {
                 {
                     feedback.map(feed => 
                         // <motion.div key={feed.id} initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
-                            <FeedList item={feed} key={feed.id}/>
+                            <FeedList item={feed} key={feed._id}/>
                         // </motion.div>    
                     )
                 }
